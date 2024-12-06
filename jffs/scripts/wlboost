@@ -90,8 +90,8 @@ nvram set wl2_reg_mode=h
 
 # force 5GHz-2 channel
 # In most cases the channels range: 100-177
-# nvram set wl2_sel_channel=149
-# nvram set wl2_chanspec=149/160
+nvram set wl2_sel_channel=149
+nvram set wl2_chanspec=149/160
 
 # force AiMesh channel
 # nvram set multi_channel_5g=48
