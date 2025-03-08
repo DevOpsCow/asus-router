@@ -7,7 +7,7 @@
 # Values are based on https://github.com/RMerl/asuswrt-merlin.ng
 
 # Add cronjob to run everyday at midnight
-cru a wlupdate "0 0 * * * /bin/sh /jffs/scripts/wlupdate"
+cru a wlupdate "0 3 * * * /bin/sh /jffs/scripts/wlupdate"
 
 # ACS adjustments (Auto Channel Selection), including DFS/UNII4 channels.
 # This tries to prevent the router from falling back to default channels.
@@ -48,14 +48,20 @@ nvram set wl2_dfs_pref=1
 # This may be unwanted or not supported by your devices, please validate overwrites.
 
 # nvram set wl_bw_160=1
-# nvram set wl_bw_cap=0xff
-# nvram set wl0_bw_cap=0xff
-# nvram set wl1_band5grp=9
+# nvram set wl_bw_cap=0xff   #1
+# nvram set wl0_bw_cap=0xff  #1
+# nvram set wl1_band5grp=9   #3
 # nvram set wl1_bw_160=1
-# nvram set wl1_bw_cap=0xff
-# nvram set wl2_band5grp=9
+# nvram set wl1_bw_cap=0xff  #1
+# nvram set wl2_band5grp=9   #1c
 # nvram set wl2_bw_160=1
-# nvram set wl2_bw_cap=0xff
+# nvram set wl2_bw_cap=0xff  #1
+# moo below, my defaults above at the end
+nvram set wl_bw_160=1
+nvram set wl_bw_cap=0xff
+nvram set wl2_band5grp=9
+nvram set wl2_bw_160=1
+nvram set wl2_bw_cap=0xff
 
 # Country adjustments
 # This tries to force all channels for a router.
@@ -100,16 +106,25 @@ nvram set wl2_reg_mode=h
 # force 2.4GHz channel (6l = 6 lower, 6u = 6 upper)
 # nvram set wl0_sel_channel=6
 # nvram set wl0_chanspec=6u
+# moo
+nvram set wl0_sel_channel=11
+nvram set wl0_chanspec=11
 
 # force 5GHz channel
 # AiMesh channel range in most cases: 36-64
 # nvram set wl1_sel_channel=36
 # nvram set wl1_chanspec=36/160
+# moo
+nvram set wl1_sel_channel=52
+nvram set wl1_chanspec=52/80
 
 # force 5GHz-2 channel (if available)
 # AiMesh channel range in most cases: 100-177
 # nvram set wl2_sel_channel=149
 # nvram set wl2_chanspec=149/160
+# moo
+nvram set wl2_sel_channel=149
+nvram set wl2_chanspec=149/160
 
 # force AiMesh channel
 # Useful when the GUI doesn't allow you to choose any lower channels.
@@ -182,4 +197,4 @@ nvram set wl2_reg_mode=h
 # nvram set 2:maxp5gb6a3=120
 
 # Uncomment line when you use the wlboost script to force interface settings.
-sh /jffs/scripts/wlboost &
+# sh /jffs/scripts/wlboost &
